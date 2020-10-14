@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load humanize %} 
+{% load humanize %}
 
 {% block title %} | Browse Property Listings {% endblock %}
 
@@ -42,9 +42,7 @@
                 <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
                 <div class="card-img-overlay">
                   <h2>
-                    {% comment %} <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span> {% endcomment %}
-
-                     <span class="badge badge-secondary text-white">500000</span>
+                    <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
                   </h2>
                 </div>
                 <div class="card-body">
@@ -90,10 +88,6 @@
 
       <div class="row">
         <div class="col-md-12">
-          {% if not listings.has_other_pages %}
-            <p> NO OTHER PAGES</p>
-          {% endif %}
-
           {% if listings.has_other_pages %}
             <ul class="pagination">
               {% if listings.has_previous %}
@@ -125,7 +119,6 @@
                   <a class="page-link">&raquo;</a>
                 </li>
               {% endif %}
-              
             </ul>
           {% endif %}
         </div>

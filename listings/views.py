@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from listings.choices import price_choices, bedroom_choices, state_choices
+from .choices import price_choices, bedroom_choices, state_choices
 
 from .models import Listing
 
@@ -53,7 +53,12 @@ def search(request):
     if bedrooms:
       queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
 
- 
+  # Price
+  if 'price' in request.GET:
+    price = request.GET['price']
+    if price:
+      queryset_list = queryset_list.filter(price__lte=price)
+
   context = {
     'state_choices': state_choices,
     'bedroom_choices': bedroom_choices,
